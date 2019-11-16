@@ -1,5 +1,17 @@
 spring:
   thymeleaf:
     cache: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shopper
+    driver-class-name: org.postgresql.Driver
+    username: shopperuser
+    password: shopperpassword
+
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
 server:
   port: 8080

@@ -8,22 +8,20 @@
 </head>
 <body>
 
-    <div class="navbar"></div>
+    <div th:include="navbar :: navbar" class="navbar"></div>
 
     <div class="container-body">
         <div class="welcome-words">
             <h1>Welcome to Shopper!</h1>
-            <h3>See what we got here for you!</h3>
+            <h3>Find the product you want or add it!</h3>
         </div>
-    <div class="list-of-products">
-<!--        <form method="get" th:action="/findProducts">-->
-<!--            <div>-->
-<!--                <label th:for="productName">Type to find your product:</label>-->
-<!--                <input th:type="text" class="form-control" th:name="productName" th:id="productName"/>-->
-<!--            </div>-->
-<!--            <button th:type="submit" class="btn btn-main">Search</button>-->
-<!--        </form>-->
-    </div>
+        <div class="search-product">
+            <form th:action="@{/getProducts}" method="get" id="search-product-form">
+                <label for="productName">Product name:</label>
+                <input type="text" class="form-control" name="productName" id="productName"/>
+                <button type="submit" class="btn, btn-search-product">Search</button>
+            </form>
+        </div>
     </div>
 
 </body>
