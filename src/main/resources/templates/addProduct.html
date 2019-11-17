@@ -8,5 +8,27 @@
 </head>
 <body>
 
+    <div th:include="navbar :: navbar"></div>
+
+    <div class="add-product">
+        <form th:action="@{/addProduct}" method="post" id="add-product">
+            <label for="productId">Product id:</label>
+            <input type="number" class="form-control" name="productId" id="productId"/></br>
+
+            <label for="productName">Product name:</label>
+            <input type="text" class="form-control" name="productName" id="productName"/></br>
+
+            <label for="productPrice">Product price:</label>
+            <input type="number" class="form-control" name="productPrice" id="productPrice"/></br>
+
+            <label for="productDescription">Product description:</label>
+            <input type="text" class="form-control" name="productDescription" id="productDescription"/></br>
+
+            <label for="productType">Product type:</label>
+            <input type="text" class="form-control" name="productType" id="productType"/></br>
+
+            <button type="submit" class="btn, btn-add-product">Create product</button>
+        </form>
+    </div>
 </body>
 </html>

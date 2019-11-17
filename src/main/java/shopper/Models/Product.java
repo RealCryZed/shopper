@@ -1,6 +1,7 @@
 package shopper.Models;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,16 +12,17 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "product")
+@RequiredArgsConstructor
 public class Product implements Serializable {
 
     @Id
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "price")
-    private long price;
+    private int price;
 
     @Column(name = "description")
     private String description;

@@ -13,8 +13,8 @@
 
         <li th:each="product : ${products}">
             <span th:text="${product.name}">NAME</span> -
-            <span th:text="${product.price}">PRICE</span> -
-            <span th:text="${product.type}">TYPE</span>
+            <span th:text="${product.price}">PRICE</span>$ -
+            <span th:text="${product.type}">TYPE</span> -
             <span th:text="${product.description}">DESCRIPTION</span>
         </li>
     </div>

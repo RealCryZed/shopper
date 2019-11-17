@@ -7,7 +7,7 @@ import shopper.Models.Product;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Product, String> {
+public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findAllByName(String name);
 }
