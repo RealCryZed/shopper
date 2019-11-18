@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import shopper.Interfaces.ProductRepository;
+import shopper.Interfaces.ProductTypeRepository;
 import shopper.Models.Product;
+import shopper.Models.ProductType;
 
 import java.util.List;
 
@@ -15,6 +17,9 @@ public class ProductController {
 
     @Autowired
     private ProductRepository prodRepo;
+
+    @Autowired
+    private ProductTypeRepository prodTypeRepo;
 
     @GetMapping("/getProducts")
     public String findProducts(
@@ -38,11 +43,21 @@ public class ProductController {
         product.setDescription(description);
         product.setType(type);
         prodRepo.save(product);
+
         return "redirect:/";
     }
 
     @GetMapping("/addProduct")
     public String addProduct() {
         return "addProduct";
+    }
+
+    @PostMapping("/addType")
+    public String addType(@RequestParam(value = "addingProductType") String type) {
+        ProductType prodType = new ProductType();
+        prodType.setType(type);
+        prodTypeRepo.save(prodType);
+
+        return "redirect:/";
     }
 }
