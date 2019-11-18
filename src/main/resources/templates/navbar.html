@@ -9,13 +9,13 @@
 <body>
     <div th:fragment="navbar">
 <!--        <h4>This is Navbar</h4>-->
-        <div class="navbar-left">
-            <a href="/">Shopper</a>
-        </div>
+        <ul class="navbar-left">
+            <li><a href="/">Shopper</a></li>
+        </ul>
 
-        <div class="navbar-right">
-            <a th:href="@{/addProduct}">Add Product</a>
-        </div>
+        <ul class="navbar-right">
+            <li><a th:href="@{/addProduct}">Add Product</a></li>
+        </ul>
     </div>
 </body>
 </html>

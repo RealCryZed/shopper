@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import shopper.Interfaces.ProductRepository;
 import shopper.Models.Product;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(produces = "application/json")
 public class ProductController {
@@ -18,7 +20,8 @@ public class ProductController {
     public String findProducts(
             @RequestParam("productName") String productName,
             Model model) {
-        model.addAttribute("products", prodRepo.findAllByName(productName));
+        List<Product> productList = prodRepo.findAllByNameContainsIgnoreCase(productName);
+        model.addAttribute("products", productList);
         return "getProducts";
     }
 
