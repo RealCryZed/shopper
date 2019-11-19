@@ -25,15 +25,14 @@
             <input type="text" class="form-control" name="productDescription" id="productDescription"/></br>
 
             <label for="productType">Product type:</label>
-<!--            <select name="productType" class="form-control" id="productType">-->
-<!--                <option>Select Product Type<</option>-->
-<!--                <option th:each="producttype : ${producttypes}"-->
-<!--                        th:text="${producttypeStat.type}"></option>-->
-<!--            </select>-->
-            <input type="text" class="form-control" name="productType" id="productType"/></br>
+            <select name="productType" class="form-control" id="productType">
+                <option>Select Product Type</option>
+                <option th:each="types : ${productTypes}"
+                        th:text="${types.type}"></option></select></br>
+<!--            <input type="text" class="form-control" name="productType" id="productType"/></br>-->
 
             <button type="submit" class="btn, btn-add-product">Create Product</button>
-        </form>
+        </form></br></br>
 
         <form th:action="@{/addType}" method="post" id="add-product-type">
             <label for="addingProductType">Type the Product Type:</label>

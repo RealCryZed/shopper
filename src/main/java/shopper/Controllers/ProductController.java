@@ -9,6 +9,7 @@ import shopper.Interfaces.ProductTypeRepository;
 import shopper.Models.Product;
 import shopper.Models.ProductType;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -37,27 +38,37 @@ public class ProductController {
                              @RequestParam(value = "productDescription") String description,
                              @RequestParam(value = "productType") String type) {
         Product product = new Product();
-        product.setId(id);
-        product.setName(name);
-        product.setPrice(price);
-        product.setDescription(description);
-        product.setType(type);
-        prodRepo.save(product);
+        if (name.trim().length() == 0 || description.trim().length() == 0) {
+            return "redirect:/addProduct";
+        } else {
+            product.setId(id);
+            product.setName(name.trim());
+            product.setPrice(price);
+            product.setDescription(description.trim());
+            product.setType(type);
+            prodRepo.save(product);
+        }
 
         return "redirect:/";
     }
 
     @GetMapping("/addProduct")
-    public String addProduct() {
+    public String addProduct(Model model) {
+        List<ProductType> typesList = (List<ProductType>) prodTypeRepo.findAllByOrderByType();
+        model.addAttribute("productTypes", typesList);
         return "addProduct";
     }
 
     @PostMapping("/addType")
     public String addType(@RequestParam(value = "addingProductType") String type) {
         ProductType prodType = new ProductType();
-        prodType.setType(type);
-        prodTypeRepo.save(prodType);
+        if (type.trim().length() == 0) {
+            return "redirect:/addProduct";
+        } else {
+            prodType.setType(type.trim());
+            prodTypeRepo.save(prodType);
+        }
 
-        return "redirect:/";
+        return "redirect:/addProduct";
     }
 }
