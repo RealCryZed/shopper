@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Shopper Home</title>
+    <title>Shopper - add new product</title>
 </head>
 <body>
 
@@ -35,7 +35,7 @@
         </form></br></br>
 
         <form th:action="@{/addType}" method="post" id="add-product-type">
-            <label for="addingProductType">Type the Product Type:</label>
+            <label for="addingProductType">Product type:</label>
             <input type="text" class="form-control" name="addingProductType" id="addingProductType"/></br>
 
             <button type="submit" class="btn, btn-add-product">Create Product Type</button>

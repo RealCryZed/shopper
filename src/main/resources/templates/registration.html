@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopper - login</title>
+</head>
+<body>
+
+    <div th:include="navbar :: navbar"></div>
+
+    <h1>Register</h1></br>
+
+    <form th:action="@{/login}" method="get">
+        <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Login Page</button>
+    </form></br>
+
+    <form method="post" th:action="@{/register}" th:object="${user}" id="registerForm">
+        <label for="email">Email: </label>
+        <input type="text" th:field="*{email}" name="email" id="email"><br/>
+
+        <label for="username">Username: </label>
+        <input type="text" th:field="*{username}" name="username" id="username"><br/>
+
+        <label for="password">Password: </label>
+        <input type="password" th:field="*{password}" name="password" id="password"><br/></br>
+
+        <button type="submit" class="btn btn-primary" value="Register User">Register User</button>
+    </form>
+
+</body>
+</html>

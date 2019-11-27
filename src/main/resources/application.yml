@@ -1,6 +1,7 @@
 spring:
   thymeleaf:
     cache: false
+
   datasource:
     url: jdbc:postgresql://localhost:5432/shopper
     driver-class-name: org.postgresql.Driver
