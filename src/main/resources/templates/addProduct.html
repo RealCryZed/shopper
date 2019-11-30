@@ -5,10 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Shopper - add new product</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
 
-    <div th:include="navbar :: navbar"></div>
+    <div th:include="navbar :: navbar" class="navbar"></div>
 
     <div class="add-product">
         <form th:action="@{/addProduct}" method="post" id="add-product">

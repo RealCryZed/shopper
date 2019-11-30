@@ -23,6 +23,10 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+    public User findAllUserInfoByUsername(String username) {
+        return userRepository.findAllByUsername(username);
+    }
+
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopper - account info</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+    <div th:include="navbar :: navbar" class="navbar"></div>
+
+    <form th:action="@{/accountInfo}" method="get">
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Authority</th>
+            </tr>
+            <tr th:each="user : ${loggedUser}">
+                <th th:text="${user.username}">Username</th>
+                <th th:text="${user.email}">Email</th>
+                <th th:text="ADMIN">Authority</th>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

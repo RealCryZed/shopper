@@ -11,10 +11,6 @@ import shopper.Interfaces.ProductRepository;
 import shopper.Interfaces.ProductTypeRepository;
 import shopper.Models.Product;
 import shopper.Models.ProductType;
-import shopper.Models.User;
-import shopper.Services.UserService;
-
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -30,6 +26,7 @@ public class ProductController {
     @GetMapping("/addProduct")
     public ModelAndView addProduct(Model model) {
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         List<ProductType> typesList = (List<ProductType>) prodTypeRepo.findAllByOrderByType();
         model.addAttribute("productTypes", typesList);
 
