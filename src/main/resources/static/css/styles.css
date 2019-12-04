@@ -1,7 +1,175 @@
 body {
-    background: linear-gradient(to right, #FFD222, #0F90B6);
+    margin: 0;
+    background: linear-gradient(to right, #42CEE7, #CE3CF9);
 }
 
-.body{
-    margin-top: 50px;
+table {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    padding: 10px;
+    border: double;
+    font-size: 18px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: Verdana;
+}
+
+.a-simple {
+    color: #053382;
+    text-decoration: underline;
+}
+
+.a-to-register {
+    text-align: center;
+    margin-left: 8px;
+    cursor: pointer;
+    color: #053382;
+    text-decoration: underline;
+}
+
+.a-to-login {
+    text-align: center;
+    margin-left: 8px;
+    cursor: pointer;
+    color: #053382;
+    text-decoration: underline;
+}
+
+.text-before-field {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.body {
+    margin-top: 30px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.btn {
+    text-align: center;
+    cursor: pointer;
+    color: #202120;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0px;
+    border-radius: 4px;
+    background-color: #58E20F;
+    border: none;
+    padding: 10px;
+    width: 115px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #69FC1B;
+}
+
+.navbar {
+    background-color: #2E353B;
+    display: flow-root;
+    padding: 10px;
+}
+
+.sub-navbar {
+    display: flow-root;
+    padding: 15px;
+}
+
+.sub-navbar-links {
+    color: white;
+    font-weight: bold;
+    padding: 25px 20px 26px 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.sub-navbar-links:hover {
+    color: #A0A0A0;
+}
+
+#navbar-left {
+    float: left;
+}
+
+#navbar-right {
+    float: right;
+}
+
+.account-info-form {
+    display: inline-block;
+    text-align: center;
+}
+
+.home-page {
+    align-content: center;
+}
+
+.login-page {
+    width: 200px;
+    display: inline;
+}
+
+.list-of-products {
+    display: inline-block;
+    align-content: center;
+    margin-top: 20px;
+}
+
+.found-products-ul {
+    list-style-type: none;
+    align-content: center;
+}
+
+.found-product-span {
+    font-weight: bold;
+}
+
+#found-product-name {
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+.found-products-li {
+    padding: 10px;
+    overflow: auto;
+}
+
+.found-products-li:hover {
+    background: #eee;
 }

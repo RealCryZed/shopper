@@ -11,7 +11,7 @@
 
     <div th:include="navbar :: navbar" class="navbar"></div>
 
-    <div class="add-product">
+    <div class="container body add-product">
         <form th:action="@{/addProduct}" method="post" id="add-product">
             <label for="productId">Product id:</label>
             <input type="number" class="form-control" name="productId" id="productId"/></br>
@@ -30,16 +30,15 @@
                 <option>Select Product Type</option>
                 <option th:each="types : ${productTypes}"
                         th:text="${types.type}"></option></select></br>
-<!--            <input type="text" class="form-control" name="productType" id="productType"/></br>-->
 
-            <button type="submit" class="btn, btn-add-product">Create Product</button>
+            <button type="submit" class="btn btn-add-product">Create product</button>
         </form></br></br>
 
         <form th:action="@{/addType}" method="post" id="add-product-type">
             <label for="addingProductType">Product type:</label>
             <input type="text" class="form-control" name="addingProductType" id="addingProductType"/></br>
 
-            <button type="submit" class="btn, btn-add-product">Create Product Type</button>
+            <button type="submit" class="btn btn-add-product">Create type</button>
         </form>
     </div>
 </body>

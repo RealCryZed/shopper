@@ -11,15 +11,16 @@
 
     <div th:include="navbar :: navbar" class="navbar"></div>
 
-    <div class="list-of-products">
-        <h3>Found products: </h3></br>
-
-        <li th:each="product : ${products}">
-            <span th:text="${product.name}">NAME</span> -
-            <span th:text="${product.price}">PRICE</span>$ -
-            <span th:text="${product.type}">TYPE</span> -
-            <span th:text="${product.description}">DESCRIPTION</span>
-        </li>
+    <div class="container body list-of-products">
+        <ul class="found-products-ul">
+            <h3 class="found-products-h3">Found products: </h3></br>
+            <li class="found-products-li" th:each="product : ${products}">
+                <span class="found-product-span" id="found-product-name" th:text="${product.name}">NAME</span> -
+                <span class="found-product-span" id="found-product-price" th:text="${product.price}">PRICE</span>$ -
+                <span class="found-product-span" id="found-product-type" th:text="${product.type}">TYPE</span> -
+                <span class="found-product-span" id="found-product-description" th:text="${product.description}">DESCRIPTION</span>
+            </li>
+        </ul>
     </div>
 </body>
 </html>

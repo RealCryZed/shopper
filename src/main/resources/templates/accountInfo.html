@@ -11,20 +11,22 @@
 
     <div th:include="navbar :: navbar" class="navbar"></div>
 
-    <form th:action="@{/accountInfo}" method="get">
-        <table>
-            <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Authority</th>
-            </tr>
-            <tr th:each="user : ${loggedUser}">
-                <th th:text="${user.username}">Username</th>
-                <th th:text="${user.email}">Email</th>
-                <th th:text="ADMIN">Authority</th>
-            </tr>
-        </table>
-    </form>
+    <div class="container body">
+        <form class="account-info-form" th:action="@{/accountInfo}" method="get">
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Authority</th>
+                </tr>
+                <tr th:each="user : ${loggedUser}">
+                    <th th:text="${user.username}">Username</th>
+                    <th th:text="${user.email}">Email</th>
+                    <th th:text="ADMIN">Authority</th>
+                </tr>
+            </table>
+        </form>
+    </div>
 
 </body>
 </html>

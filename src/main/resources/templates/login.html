@@ -11,22 +11,22 @@
 
     <div th:include="navbar :: navbar" class="navbar"></div>
 
-    <h1>Login</h1>
+    <div class="container body login-page">
+        <h1>Login</h1>
 
-    <form th:action="@{/register}" method="get">
-        <button class="btn btn-md" type="Submit">Go To Registration Page</button>
-    </form></br>
+        <form method="post" th:action="@{/login}" id="loginForm">
+            <label class="text-before-field" for="username">Username: </label></br>
+            <input type="text" name="username" id="username"></br></br>
 
-    <form method="post" th:action="@{/login}" id="loginForm">
-        <label for="username">Username: </label></br>
-        <input type="text" name="username" id="username"></br>
+            <label class="text-before-field" for="password">Password: </label></br>
+            <input type="password" name="password" id="password"></br>
 
-        <label for="password">Password: </label></br>
-        <input type="password" name="password" id="password"></br>
+            <input style="visibility: hidden" type="checkbox" checked name="remember-me"/></br>
 
-        <input style="visibility: hidden" type="checkbox" checked name="remember-me"/></br>
+            <button type="submit" class="btn btn-login" value="Login">Login</button>
+            <a class="a-to-register" th:href="@{/register}">Sign up</a>
+        </form>
+    </div>
 
-        <button type="submit" name="Submit" th:text="Login" value="Login"/>
-    </form>
 </body>
 </html>

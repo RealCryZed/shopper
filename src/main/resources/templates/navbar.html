@@ -10,15 +10,15 @@
 <body>
 
     <div th:fragment="navbar">
-        <ul class="navbar-left">
-            <li><a href="/">Shopper</a></li>
-        </ul>
+        <div class="sub-navbar" id="navbar-left">
+            <a class="sub-navbar-links" href="/">Shopper</a>
+        </div>
 
-        <ul class="navbar-right">
-            <li><a th:href="@{/addProduct}">Add Product</a></li>
-            <li><a th:href="@{/accountInfo}">Account Info</a></li>
-            <li><a th:href="@{/logout}">Log out</a></li>
-        </ul>
+        <div class="sub-navbar" id="navbar-right">
+            <a class="sub-navbar-links" th:href="@{/addProduct}">Add Product</a>
+            <a class="sub-navbar-links" th:href="@{/accountInfo}">Account Info</a>
+            <a class="sub-navbar-links" th:href="@{/logout}">Log out</a>
+        </div>
     </div>
 
 </body>
