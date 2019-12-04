@@ -49,6 +49,10 @@ h1, h2, h3, h4, h5 {
     font-family: Verdana;
 }
 
+span.validationError {
+    color: red;
+}
+
 .a-simple {
     color: #053382;
     text-decoration: underline;
@@ -141,7 +145,7 @@ h1, h2, h3, h4, h5 {
     align-content: center;
 }
 
-.login-page {
+.login-page, .registration-page {
     width: 200px;
     display: inline;
 }

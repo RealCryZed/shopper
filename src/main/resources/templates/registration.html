@@ -11,22 +11,40 @@
 
     <div th:include="navbar :: navbar" class="navbar"></div>
 
-    <div class="container body">
-        <h1>Register</h1></br>
-
-<!--        <form th:action="@{/login}" method="get">-->
-<!--            <button class="btn btn-md btn-warning btn-block" type="Submit">Login</button>-->
-<!--        </form></br>-->
+    <div class="container body registration-page">
+        <h1>Registration</h1>
 
         <form method="post" th:action="@{/register}" th:object="${user}" id="registerForm">
-            <label class="text-before-field" for="email">Email: </label>
+
+            <div th:if="${#fields.hasErrors()}">
+                <span class="validationError">
+                    Please, correct the problems below and resubmit.
+                </span><br/><br/>
+            </div>
+
+            <label class="text-before-field" for="email">Email: </label><br/>
+            <div th:if="${#fields.hasErrors('email')}">
+                <span class="validationError"
+                  th:errors="*{email}">Name Error
+                </span><br/>
+            </div>
             <input type="text" th:field="*{email}" name="email" id="email"><br/><br/>
 
-            <label class="text-before-field" for="username">Username: </label>
+            <label class="text-before-field" for="username">Username: </label><br/>
+            <div th:if="${#fields.hasErrors('username')}">
+                <span class="validationError"
+                      th:errors="*{username}">Name Error
+                </span><br/>
+            </div>
             <input type="text" th:field="*{username}" name="username" id="username"><br/><br/>
 
-            <label class="text-before-field" for="password">Password: </label>
-            <input type="password" th:field="*{password}" name="password" id="password"><br/></br>
+            <label class="text-before-field" for="password">Password: </label><br/>
+            <div th:if="${#fields.hasErrors('password')}">
+                <span class="validationError"
+                      th:errors="*{password}">Name Error
+                </span><br/>
+            </div>
+            <input type="password" th:field="*{password}" name="password" id="password"><br/><br/>
 
             <button type="submit" class="btn btn-primary" value="Register User">Sign up</button>
 

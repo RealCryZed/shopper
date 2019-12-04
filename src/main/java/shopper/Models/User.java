@@ -6,8 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -21,18 +20,21 @@ public class User implements UserDetails {
     @Column(name = "user_id")
     private int id;
 
-    @NotEmpty(message = "Username field must be filled")
-    @Size(min = 1, max = 50)
-    @Column(name = "username")
-    private String username;
-
-    @NotEmpty(message = "Email field must be filled")
-    @Size(max = 100)
+    @NotNull
+    @Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
+    @Size(max = 100, message = "Please, enter email, lower than 100 letters")
     @Column(name = "email")
     private String email;
 
-    @NotEmpty(message = "Password field must be filled")
-    @Size(min = 1, max = 255)
+    @NotBlank(message = "Please, provide a valid username")
+    @NotNull
+    @Size(min = 1, max = 50, message = "Size of username must be between 1 and 50")
+    @Column(name = "username")
+    private String username;
+
+    @NotBlank(message = "Please, provide a valid password")
+    @NotNull
+    @Size(min = 1, max = 255, message = "Size of password must be between 1 and 255")
     @Column(name = "password")
     private String password;
 

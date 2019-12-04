@@ -14,29 +14,29 @@
     <div class="container body add-product">
         <form th:action="@{/addProduct}" method="post" id="add-product">
             <label for="productId">Product id:</label>
-            <input type="number" class="form-control" name="productId" id="productId"/></br>
+            <input type="number" class="form-control" name="productId" id="productId"/><br/>
 
             <label for="productName">Product name:</label>
-            <input type="text" class="form-control" name="productName" id="productName"/></br>
+            <input type="text" class="form-control" name="productName" id="productName"/><br/>
 
             <label for="productPrice">Product price:</label>
-            <input type="number" class="form-control" name="productPrice" id="productPrice"/></br>
+            <input type="number" class="form-control" name="productPrice" id="productPrice"/><br/>
 
             <label for="productDescription">Product description:</label>
-            <input type="text" class="form-control" name="productDescription" id="productDescription"/></br>
+            <input type="text" class="form-control" name="productDescription" id="productDescription"/><br/>
 
             <label for="productType">Product type:</label>
             <select name="productType" class="form-control" id="productType">
                 <option>Select Product Type</option>
                 <option th:each="types : ${productTypes}"
-                        th:text="${types.type}"></option></select></br>
+                        th:text="${types.type}"></option></select><br/>
 
             <button type="submit" class="btn btn-add-product">Create product</button>
-        </form></br></br>
+        </form><br/><br/>
 
         <form th:action="@{/addType}" method="post" id="add-product-type">
             <label for="addingProductType">Product type:</label>
-            <input type="text" class="form-control" name="addingProductType" id="addingProductType"/></br>
+            <input type="text" class="form-control" name="addingProductType" id="addingProductType"/><br/>
 
             <button type="submit" class="btn btn-add-product">Create type</button>
         </form>
