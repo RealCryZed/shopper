@@ -151,27 +151,39 @@ span.validationError {
 }
 
 .list-of-products {
-    display: inline-block;
-    align-content: center;
     margin-top: 20px;
+}
+
+.list-of-product-width {
+    text-align: center;
+}
+
+.found-products-h2 {
+    font-weight: bold;
 }
 
 .found-products-ul {
     list-style-type: none;
-    align-content: center;
+    width: 350px;
+    margin: 0 auto;
 }
 
-.found-product-span {
+.found-products-li {
+    margin: 10px;
+}
+
+.found-products-a {
+    color: darkblue;
     font-weight: bold;
+    width: 100%;
+}
+
+.found-products-inside-div {
+    padding: 8px 15px 8px 15px;
 }
 
 #found-product-name {
     font: 200 12px/1.5 Georgia, Times New Roman, serif;
-}
-
-.found-products-li {
-    padding: 10px;
-    overflow: auto;
 }
 
 .found-products-li:hover {
