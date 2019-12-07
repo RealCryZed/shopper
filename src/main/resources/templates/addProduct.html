@@ -12,31 +12,33 @@
     <div th:include="navbar :: navbar" class="navbar"></div>
 
     <div class="container body add-product">
-        <form th:action="@{/addProduct}" method="post" id="add-product">
-            <label for="productId">Product id:</label>
-            <input type="number" class="form-control" name="productId" id="productId"/><br/>
+        <h1 style="margin-bottom: 50px;">Create your own product!</h1>
 
-            <label for="productName">Product name:</label>
-            <input type="text" class="form-control" name="productName" id="productName"/><br/>
+        <form class="add-product-form" th:action="@{/addProduct}" method="post">
+            <label class="text-before-field" for="productId">Product id:</label><br/>
+            <input type="number" class="input-place" placeholder="ID" name="productId" id="productId"/><br/><br/>
 
-            <label for="productPrice">Product price:</label>
-            <input type="number" class="form-control" name="productPrice" id="productPrice"/><br/>
+            <label class="text-before-field" for="productName">Product name:</label><br/>
+            <input type="text" class="input-place" placeholder="Product Name" name="productName" id="productName"/><br/><br/>
 
-            <label for="productDescription">Product description:</label>
-            <input type="text" class="form-control" name="productDescription" id="productDescription"/><br/>
+            <label class="text-before-field" for="productPrice">Product price:</label><br/>
+            <input type="number" class="input-place" placeholder="Price" name="productPrice" id="productPrice"/><br/><br/>
 
-            <label for="productType">Product type:</label>
-            <select name="productType" class="form-control" id="productType">
+            <label class="text-before-field" for="productDescription">Product description:</label><br/>
+            <input type="text" class="input-place" placeholder="Description" name="productDescription" id="productDescription"/><br/><br/>
+
+            <label class="text-before-field" for="productType">Product type:</label><br/>
+            <select name="productType" id="productType">
                 <option>Select Product Type</option>
                 <option th:each="types : ${productTypes}"
-                        th:text="${types.type}"></option></select><br/>
+                        th:text="${types.type}"></option></select><br/><br/>
 
             <button type="submit" class="btn btn-add-product">Create product</button>
         </form><br/><br/>
 
-        <form th:action="@{/addType}" method="post" id="add-product-type">
-            <label for="addingProductType">Product type:</label>
-            <input type="text" class="form-control" name="addingProductType" id="addingProductType"/><br/>
+        <form class="add-product-type-form" th:action="@{/addType}" method="post" id="add-product-type">
+            <label class="text-before-field" for="addingProductType">Product type:</label><br/>
+            <input type="text" class="input-place" placeholder="Product type" name="addingProductType" id="addingProductType"/><br/><br/>
 
             <button type="submit" class="btn btn-add-product">Create type</button>
         </form>

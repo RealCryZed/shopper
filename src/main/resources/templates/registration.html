@@ -28,7 +28,7 @@
                   th:errors="*{email}">Name Error
                 </span><br/>
             </div>
-            <input type="text" th:field="*{email}" name="email" id="email"><br/><br/>
+            <input type="text" class="input-place" placeholder="Email" th:field="*{email}" name="email" id="email"><br/><br/>
 
             <label class="text-before-field" for="username">Username: </label><br/>
             <div th:if="${#fields.hasErrors('username')}">
@@ -36,7 +36,7 @@
                       th:errors="*{username}">Name Error
                 </span><br/>
             </div>
-            <input type="text" th:field="*{username}" name="username" id="username"><br/><br/>
+            <input type="text" class="input-place" placeholder="Username" th:field="*{username}" name="username" id="username"><br/><br/>
 
             <label class="text-before-field" for="password">Password: </label><br/>
             <div th:if="${#fields.hasErrors('password')}">
@@ -44,7 +44,7 @@
                       th:errors="*{password}">Name Error
                 </span><br/>
             </div>
-            <input type="password" th:field="*{password}" name="password" id="password"><br/><br/>
+            <input type="password" class="input-place" placeholder="Password" th:field="*{password}" name="password" id="password"><br/><br/>
 
             <button type="submit" class="btn btn-primary" value="Register User">Sign up</button>
 

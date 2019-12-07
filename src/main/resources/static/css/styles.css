@@ -79,8 +79,14 @@ span.validationError {
     font-size: 15px;
 }
 
+.input-place {
+    padding: 3px;
+    width: 200px;
+}
+
 .body {
     margin-top: 30px;
+    margin-bottom: 10px;
     display: inline-block;
     text-align: center;
     width: 100%;
@@ -141,6 +147,26 @@ span.validationError {
     text-align: center;
 }
 
+.add-product-form {
+    list-style-type: none;
+    width: 300px;
+    margin: 0 auto;
+    padding: 15px 0px;
+    border: double;
+    border-radius: 1px;
+    border-color: #292929;
+}
+
+.add-product-type-form {
+    list-style-type: none;
+    width: 300px;
+    margin: 0 auto;
+    padding: 15px 0px;
+    border: double;
+    border-radius: 1px;
+    border-color: #292929;
+}
+
 .home-page {
     align-content: center;
 }
@@ -170,10 +196,14 @@ span.validationError {
 
 .found-products-li {
     margin: 10px;
+    border: 2px;
+    border-color: #221912;
+    border-style: ridge;
 }
 
 .found-products-a {
-    color: darkblue;
+    color: #422E1D;
+    font-size: 17px;
     font-weight: bold;
     width: 100%;
 }
