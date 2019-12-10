@@ -26,15 +26,12 @@ public class User implements UserDetails {
     @Column(name = "email")
     private String email;
 
-    @NotBlank(message = "Please, provide a valid username")
-    @NotNull
-    @Size(min = 1, max = 50, message = "Size of username must be between 1 and 50")
+    @Size(min = 1, message = "Username must be at least 4 letters")
+    @Size(max = 50, message = "Username must be lower than 50 letters")
     @Column(name = "username")
     private String username;
 
-    @NotBlank(message = "Please, provide a valid password")
-    @NotNull
-    @Size(min = 1, max = 255, message = "Size of password must be between 1 and 255")
+    @Size(min = 1, message = "Password must be at least 4 letters")
     @Column(name = "password")
     private String password;
 

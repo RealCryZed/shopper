@@ -80,6 +80,7 @@ span.validationError {
 }
 
 .input-place {
+    margin-top: 3px;
     padding: 3px;
     width: 200px;
 }

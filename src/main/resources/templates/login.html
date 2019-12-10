@@ -15,6 +15,13 @@
         <h1>Login</h1>
 
         <form method="post" th:action="@{/login}" id="loginForm">
+
+            <div th:if="${(#httpServletRequest.getParameter('error') != null) and (#httpServletRequest.getParameter('error') == 'true')}">
+                <span class="validationError">
+                    Username and\or password is incorrect.
+                </span><br/><br/>
+            </div>
+
             <label class="text-before-field" for="username">Username: </label><br/>
             <input type="text" class="input-place" placeholder="Username" name="username" id="username"><br/><br/>
 

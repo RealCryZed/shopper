@@ -29,17 +29,8 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-                              @RequestParam(value = "logout", required = false) String logout){
+    public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
-
-        if (error != null) {
-            modelAndView.addObject("error", "Invalid username/password");
-        }
-
-        if (logout != null) {
-            modelAndView.addObject("message", "Logged out");
-        }
 
         modelAndView.setViewName("login");
 

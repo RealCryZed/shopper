@@ -58,6 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .frameOptions()
                 .sameOrigin()
                 .and()
-                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(600);
+                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(26400);
     }
 }
