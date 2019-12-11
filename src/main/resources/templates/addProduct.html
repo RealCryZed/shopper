@@ -48,7 +48,7 @@
                       th:errors="*{description}">Name Error
                 </span><br/>
             </div>
-            <input type="text" class="input-place" placeholder="Description" th:field="*{description}" name="description" id="description"/><br/><br/>
+            <textarea class="input-place input-textarea" placeholder="Description" th:field="*{description}" name="description" id="description"></textarea><br/><br/>
 
             <label class="text-before-field" for="type">Product type:</label><br/>
             <div th:if="${#fields.hasErrors('type')}">

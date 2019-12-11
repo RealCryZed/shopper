@@ -85,6 +85,13 @@ span.validationError {
     width: 200px;
 }
 
+.input-textarea {
+    height: 160px;
+    width: 345px;
+    resize: vertical;
+    padding: 5px;
+}
+
 .body {
     margin-top: 30px;
     margin-bottom: 10px;
@@ -150,7 +157,7 @@ span.validationError {
 
 .add-product-form {
     list-style-type: none;
-    width: 300px;
+    width: 400px;
     margin: 0 auto;
     padding: 15px 0px;
     border: double;
@@ -160,7 +167,7 @@ span.validationError {
 
 .add-product-type-form {
     list-style-type: none;
-    width: 300px;
+    width: 400px;
     margin: 0 auto;
     padding: 15px 0px;
     border: double;
@@ -211,6 +218,14 @@ span.validationError {
 
 .found-products-inside-div {
     padding: 8px 15px 8px 15px;
+}
+
+.found-products-inside-div h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 #found-product-name {
