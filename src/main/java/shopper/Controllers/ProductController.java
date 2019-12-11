@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import shopper.Interfaces.ProductRepository;
@@ -68,8 +69,8 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView();
 
         if (bindingResult.hasErrors() || prodType.getType().trim().length() == 0) {
-            modelAndView.setViewName("addProduct");
             modelAndView.addObject("productTypes", productService.findAllByOrderAndType());
+            modelAndView.setViewName("addProduct");
         } else {
             prodType.setType(prodType.getType().trim());
             productService.saveProductType(prodType);
@@ -80,12 +81,20 @@ public class ProductController {
     }
 
     @GetMapping("/getProducts")
-    public ModelAndView findProducts(
-            @RequestParam("productName") String productName,
-            Model model) {
-        List<Product> productList = productService.findAllProductsByName(productName);
-        model.addAttribute("products", productList);
+    public ModelAndView findProducts(@RequestParam("productName") String productName,
+                                     Model model) {
+        ModelAndView modelAndView = new ModelAndView();
 
-        return new ModelAndView("getProducts");
+        List<Product> productList = productService.findAllProductsByName(productName);
+
+        if(productList.size() == 0) {
+            modelAndView.addObject("productNotFound", "Product " + productName + " not found");
+            modelAndView.setViewName("index");
+        } else{
+            model.addAttribute("products", productList);
+            modelAndView.setViewName("getProducts");
+        }
+
+        return modelAndView;
     }
 }
