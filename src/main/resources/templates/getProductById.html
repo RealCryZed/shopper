@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopper - list of products</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+<div th:include="navbar :: navbar" class="navbar"></div>
+
+    <div class="container body product-by-id">
+        <div class="product-by-id-width">
+            <div class="product-by-id-info" th:action="@{/getProductById}" method="get">
+                <div>
+                    <h4 id="product-by-id-name" th:text="${productById.name}">Name</h4>
+                </div>
+
+                <div>
+                    <p id="product-by-id-price" class="price" th:text="${productById.price} + '$'">Price</p>
+                    <h5 id="product-by-id-description" th:text="${productById.description}">Description</h5>
+                </div>
+
+<!--                <div>-->
+<!--                    <h5 th:text="${productById.description}">Description</h5>-->
+<!--                </div>-->
+            </div>
+        </div>
+
+<!--    <div class="list-of-product-width">-->
+<!--        <h2 class="found-products-h2">Found products: </h2><br/>-->
+<!--        <div>-->
+<!--            <ul class="found-products-ul">-->
+<!--                <li class="found-products-li" th:each="product : ${products}">-->
+<!--                    <a class="found-products-a" th:href="@{'/getProductById/' + ${product.id}}">-->
+<!--                        <div class="found-products-inside-div">-->
+<!--                            <h4 th:text="${product.name}">Name</h4>-->
+<!--                            <p class="price" th:text="${product.price} + '$'">Price</p>-->
+<!--                            <h5 th:text="${product.description}">Description</h5>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+    </div>
+</body>
+</html>

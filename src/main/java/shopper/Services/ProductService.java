@@ -7,6 +7,7 @@ import shopper.Models.Product;
 import shopper.Models.ProductType;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("productService")
 public class ProductService {
@@ -25,6 +26,10 @@ public class ProductService {
 
     public void saveProductType(ProductType productType) {
         productTypeRepo.save(productType);
+    }
+
+    public Optional<Product> getProductById(Long id) {
+        return productRepo.findById(id);
     }
 
     public List<Product> findAllProductsByName(String productName) {

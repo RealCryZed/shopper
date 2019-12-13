@@ -22,10 +22,10 @@
 <!--                </li>-->
 <!--            </ul>-->
 
-            <div class="pricing-box text-center">
+            <div>
                 <ul class="found-products-ul">
                     <li class="found-products-li" th:each="product : ${products}">
-                        <a class="found-products-a" href="/">
+                        <a class="found-products-a" th:href="@{'/getProduct/' + ${product.id}}">
                             <div class="found-products-inside-div">
                                 <h4 th:text="${product.name}">Name</h4>
                                 <p class="price" th:text="${product.price} + '$'">Price</p>
