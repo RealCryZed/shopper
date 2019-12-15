@@ -215,29 +215,37 @@ span.validationError {
 
 .list-of-products {
     margin-top: 20px;
+    width: 100%;
+    display: flex;
 }
 
 .list-of-product-width {
     text-align: center;
+    margin: 0 auto;
 }
 
 .found-products-h2 {
     font-weight: bold;
 }
 
-.found-products-list {
-
+.found-products-div-ul {
+    max-width: 1164px;
+    margin: 0 auto;
 }
 
 .found-products-ul {
     list-style-type: none;
-    width: 350px;
+    width: calc(100% + 16px);
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    height: 5em;
 }
 
 .found-products-li {
     background-color: #3090B4;
-    margin: 10px;
+    width: 350px;
+    margin: 10px auto;
     border: 2px;
     border-color: #221912;
     border-style: ridge;
@@ -251,6 +259,7 @@ span.validationError {
 }
 
 .found-products-inside-div {
+    min-height: 166.34px;
     padding: 8px 15px 8px 15px;
 }
 
