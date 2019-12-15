@@ -14,15 +14,7 @@
     <div class="container body list-of-products">
         <div class="list-of-product-width">
             <h2 class="found-products-h2">Found products: </h2><br/>
-<!--            <ul class="found-products-ul">-->
-<!--                <li class="found-products-li" th:each="product : ${products}">-->
-<!--                    <span class="found-product-span" id="found-product-name" th:text="${product.name}">NAME</span> - -->
-<!--                    <span class="found-product-span" id="found-product-price" th:text="${product.price}">PRICE</span>$ - -->
-<!--                    <span class="found-product-span" id="found-product-description" th:text="${product.description}">DESCRIPTION</span>-->
-<!--                </li>-->
-<!--            </ul>-->
-
-            <div>
+            <div class="found-products-list">
                 <ul class="found-products-ul">
                     <li class="found-products-li" th:each="product : ${products}">
                         <a class="found-products-a" th:href="@{'/getProduct/' + ${product.id}}">
