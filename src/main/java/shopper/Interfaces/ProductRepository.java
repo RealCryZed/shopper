@@ -10,4 +10,6 @@ import java.util.List;
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findAllByNameContainsIgnoreCase(String name);
+
+    List<Product> findAllByUsername(String username);
 }

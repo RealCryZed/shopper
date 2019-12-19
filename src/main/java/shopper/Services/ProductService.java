@@ -28,12 +28,20 @@ public class ProductService {
         productTypeRepo.save(productType);
     }
 
+    public void deleteProductById(Long id) {
+        productRepo.deleteById(id);
+    }
+
     public Optional<Product> getProductById(Long id) {
         return productRepo.findById(id);
     }
 
     public List<Product> findAllProductsByName(String productName) {
         return productRepo.findAllByNameContainsIgnoreCase(productName);
+    }
+
+    public List<Product> findAllProductsByUser(String username) {
+        return productRepo.findAllByUsername(username);
     }
 
     public List<ProductType> findAllByOrderAndType() {

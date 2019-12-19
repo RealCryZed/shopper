@@ -38,4 +38,8 @@ public class Product implements Serializable {
     @NotBlank(message = "Please, provide a type")
     @Column(name = "type")
     private String type;
+
+    @Size(max = 50)
+    @Column(name = "username")
+    private String username;
 }

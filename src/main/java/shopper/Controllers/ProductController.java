@@ -44,6 +44,7 @@ public class ProductController {
         modelAndView.addObject("productType", productType);
 
         modelAndView.setViewName("addProduct");
+
         return modelAndView;
     }
 
@@ -58,24 +59,11 @@ public class ProductController {
             modelAndView.setViewName("addProduct");
             modelAndView.addObject("productTypes", productService.findAllByOrderAndType());
         } else {
-//            product.setName(product.getName().trim());
-//            product.setDescription(product.getDescription().trim());
-//            productService.saveProduct(product);
             addProductApi(product);
             modelAndView.setViewName("index");
         }
 
         return modelAndView;
-    }
-
-//    @PostMapping
-    public ResponseEntity<Product> addProductApi(@RequestBody Product product) {
-        product.setName(product.getName().trim());
-        product.setDescription(product.getDescription().trim());
-        productService.saveProduct(product);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create("http://localhost:8080/products/" + product.getId()));
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
     @PostMapping("/addType")
@@ -94,6 +82,12 @@ public class ProductController {
         }
 
         return modelAndView;
+    }
+
+    @GetMapping("/deleteProduct/{id}")
+    public ModelAndView deleteProduct(@PathVariable Long id) {
+        deleteProductApi(id);
+        return new ModelAndView("redirect:/accountInfo");
     }
 
     @GetMapping("/getProducts")
@@ -125,7 +119,26 @@ public class ProductController {
             modelAndView.setViewName("index");
             return modelAndView;
         }
+
         return modelAndView;
+    }
+
+    public ResponseEntity<Product> addProductApi(@RequestBody Product product) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        product.setName(product.getName().trim());
+        product.setDescription(product.getDescription().trim());
+        product.setUsername(auth.getName());
+        productService.saveProduct(product);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(URI.create("http://localhost:8080/products/" + product.getId()));
+
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+    }
+
+    public void deleteProductApi(Long id) {
+        productService.deleteProductById(id);
     }
 
     public Optional<Product> findProductByIdApi(Long id) {

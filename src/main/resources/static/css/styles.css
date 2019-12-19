@@ -179,9 +179,154 @@ span.validationError {
  *  accountInfo page
  */
 
+.account-info {
+    width: 100%;
+    margin: 0 auto;
+}
+
 .account-info-form {
     display: inline-block;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-products-div-ul {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.user-products-ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 5em;
+}
+
+.user-products-li {
+    background-color: #3090B4;
+    width: 250px;
+    margin: 10px auto;
+    border: 2px;
+    border-color: #221912;
+    border-style: ridge;
+}
+
+.user-product-div-delete-btn {
+    float: right;
+    margin-right: 7px;
+    position: relative;
+}
+
+.user-product-delete-btn {
+    font-size: 20px;
+    color: #990707;
+    float: right;
+    margin: 3px 4px 4px 4px;
+}
+
+.user-product-delete-btn:hover {
+    text-decoration: underline;
+}
+
+.user-products-a {
+    color: #2F2014;
+    font-size: 17px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.user-products-inside-div {
+    min-height: 166.34px;
+    padding: 8px 15px 8px 15px;
+}
+
+.user-products-inside-div h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.user-products-li:hover {
+    background: #eee;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 40%;
+    height: 200px;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: #06D85F;
+}
+.popup .content {
+    height: 80%;
+    overflow: auto;
+}
+
+.popup-to-delete-product-btns {
+    margin-top: 25px;
+}
+
+#popup-to-delete-item-btn-yes {
+    margin-right: 10px;
+    padding: 15px 30px 15px 30px;
+    color: white;
+    background-color: #04721F;
+}
+
+#popup-to-delete-item-btn-no {
+    padding: 15px 30px 15px 30px;
+    color: white;
+    background-color: #CC1212;
+}
+
+@media screen and (max-width: 700px){
+    .popup{
+        width: 70%;
+    }
 }
 
 /*
@@ -235,7 +380,7 @@ span.validationError {
 
 .found-products-ul {
     list-style-type: none;
-    width: calc(100% + 16px);
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;

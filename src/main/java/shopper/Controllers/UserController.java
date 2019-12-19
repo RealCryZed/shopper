@@ -8,10 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import shopper.Models.Product;
 import shopper.Models.User;
+import shopper.Services.ProductService;
 import shopper.Services.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -20,9 +23,13 @@ public class UserController {
    @Autowired
    private UserService userService;
 
+    @Autowired
+    private ProductService productService;
+
     @RequestMapping("/")
     public ModelAndView index(Model model) {
         ModelAndView modelAndView = new ModelAndView();
+        
         modelAndView.setViewName("index");
 
         return modelAndView;
@@ -41,8 +48,10 @@ public class UserController {
     public ModelAndView registerPage() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
+        
         modelAndView.addObject("user", user);
         modelAndView.setViewName("registration");
+        
         return modelAndView;
     }
 
@@ -62,6 +71,7 @@ public class UserController {
             modelAndView.setViewName("login");
 
         }
+        
         return modelAndView;
     }
 
@@ -70,7 +80,10 @@ public class UserController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         User user = userService.findAllUserInfoByUsername(auth.getName());
+        List<Product> productList = productService.findAllProductsByUser(user.getUsername());
+
         model.addAttribute("loggedUser", user);
+        model.addAttribute("userProducts", productList);
 
         return new ModelAndView("accountInfo");
     }
