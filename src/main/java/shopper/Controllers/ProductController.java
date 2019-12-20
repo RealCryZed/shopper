@@ -1,6 +1,7 @@
 package shopper.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -86,8 +87,18 @@ public class ProductController {
 
     @GetMapping("/deleteProduct/{id}")
     public ModelAndView deleteProduct(@PathVariable Long id) {
-        deleteProductApi(id);
-        return new ModelAndView("redirect:/accountInfo");
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Optional<Product> product = productService.getProductById(id);
+
+        if (auth.getName().equals(product.get().getUsername())) {
+            deleteProductApi(id);
+            modelAndView.setViewName("redirect:/accountInfo");
+        } else {
+            modelAndView.setViewName("redirect:/");
+        }
+
+        return modelAndView;
     }
 
     @GetMapping("/getProducts")
