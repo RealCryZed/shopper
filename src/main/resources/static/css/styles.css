@@ -78,6 +78,12 @@ span.validationError {
     text-decoration: underline;
 }
 
+.select-element {
+    width: 210px;
+    margin-top: 3px;
+    padding: 3px;
+}
+
 .text-before-field {
     font-weight: bold;
     font-size: 15px;
@@ -222,6 +228,7 @@ span.validationError {
 
 .user-product-delete-btn {
     font-size: 20px;
+    font-weight: bold;
     color: #990707;
     float: right;
     margin: 3px 4px 4px 4px;
@@ -353,6 +360,13 @@ span.validationError {
     border-color: #292929;
 }
 
+/*
+ *  editProduct page
+ */
+
+.edit-product {
+
+}
 
 /*
  *  getProducts page

@@ -18,45 +18,45 @@
 
         <form class="add-product-form" th:action="@{/addProduct}" th:object="${product}" method="post">
 
-            <label class="text-before-field" for="id">Product id:</label><br/>
+            <label class="text-before-field" for="addProductId">Product id:</label><br/>
             <div th:if="${#fields.hasErrors('id')}">
                 <span class="validationError"
                       th:errors="*{id}">Name Error
                 </span><br/>
             </div>
-            <input type="number" class="input-place" placeholder="ID" name="id" id="id"/><br/><br/>
+            <input type="number" class="input-place" placeholder="ID" name="id" id="addProductId"/><br/><br/>
 
-            <label class="text-before-field" for="name">Product name:</label><br/>
+            <label class="text-before-field" for="addProductName">Product name:</label><br/>
             <div th:if="${#fields.hasErrors('name')}">
                 <span class="validationError"
                       th:errors="*{name}">Name Error
                 </span><br/>
             </div>
-            <input type="text" class="input-place" placeholder="Product Name" th:field="*{name}" name="name" id="name"/><br/><br/>
+            <input type="text" class="input-place" placeholder="Product Name" th:field="*{name}" name="name" id="addProductName"/><br/><br/>
 
-            <label class="text-before-field" for="price">Product price:</label><br/>
+            <label class="text-before-field" for="addProductPrice">Product price:</label><br/>
             <div th:if="${#fields.hasErrors('price')}">
                 <span class="validationError"
                       th:errors="*{price}">Name Error
                 </span><br/>
             </div>
-            <input type="number" step="0.01" min="0" class="input-place" placeholder="Price" th:field="*{price}" name="price" id="price"/><br/><br/>
+            <input type="number" step="0.01" min="0" class="input-place" placeholder="Price" th:field="*{price}" name="price" id="addProductPrice"/><br/><br/>
 
-            <label class="text-before-field" for="description">Product description:</label><br/>
+            <label class="text-before-field" for="addProductDescription">Product description:</label><br/>
             <div th:if="${#fields.hasErrors('description')}">
                 <span class="validationError"
                       th:errors="*{description}">Name Error
                 </span><br/>
             </div>
-            <textarea class="input-place input-textarea" placeholder="Description" th:field="*{description}" name="description" id="description"></textarea><br/><br/>
+            <textarea class="input-place input-textarea" placeholder="Description" th:field="*{description}" name="description" id="addProductDescription"></textarea><br/><br/>
 
-            <label class="text-before-field" for="type">Product type:</label><br/>
+            <label class="text-before-field" for="addProductType">Product type:</label><br/>
             <div th:if="${#fields.hasErrors('type')}">
                 <span class="validationError"
                       th:errors="*{type}">Name Error
                 </span><br/>
             </div>
-            <select th:selected="*{type}" name="type" id="type">
+            <select class="select-element" th:selected="*{type}" name="type" id="addProductType">
                 <option value="" disabled selected hidden>Select Product Type</option>
                 <option th:each="types : ${productTypes}"
                         th:text="${types.type}"></option></select><br/><br/>
