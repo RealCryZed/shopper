@@ -222,8 +222,18 @@ span.validationError {
 
 .user-product-div-delete-btn {
     float: right;
-    margin-right: 7px;
+    padding-left: 7px;
     position: relative;
+}
+
+.user-product-edit-btn-element {
+    margin-right: 5px;
+}
+
+.user-product-edit-btn {
+    width: 16px;
+    height: 16px;
+    margin: 5px 3px 4px 4px;
 }
 
 .user-product-delete-btn {
@@ -231,7 +241,8 @@ span.validationError {
     font-weight: bold;
     color: #990707;
     float: right;
-    margin: 3px 4px 4px 4px;
+    margin: 3px 10px 4px 4px;
+    padding: 0px 3px;
 }
 
 .user-product-delete-btn:hover {

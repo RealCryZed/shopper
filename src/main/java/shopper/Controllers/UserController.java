@@ -85,7 +85,7 @@ public class UserController {
         model.addAttribute("isProductListEmpty", false);
         if(productList.size() == 0) {
             model.addAttribute("isProductListEmpty", true);
-            model.addAttribute("emptyProduct", "User doesn't have any product.");
+            model.addAttribute("emptyProduct", "You don't have any product yet.");
         }
 
         model.addAttribute("loggedUser", user);

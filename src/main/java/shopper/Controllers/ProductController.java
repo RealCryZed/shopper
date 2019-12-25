@@ -18,7 +18,6 @@ import shopper.Services.ProductService;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -140,7 +139,6 @@ public class ProductController {
 
             modelAndView.setViewName("redirect:/editProduct/error/" + id);
         } else {
-//            editProductApi(product);
             product.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
             productService.saveProduct(product);
             modelAndView.setViewName("redirect:/accountInfo");
@@ -211,18 +209,6 @@ public class ProductController {
 
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
-
-//    public ResponseEntity<Product> editProductApi(@RequestBody Product product) {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//
-////        product.setId(id);
-//        product.setName(product.getName().trim());
-//        product.setDescription(product.getDescription().trim());
-//        product.setUsername(auth.getName());
-//        productService.saveProduct(product);
-//
-//        return new ResponseEntity<>(HttpStatus.ACCEPTED);
-//    }
 
     public void deleteProductApi(Integer id) {
         productService.deleteProductById(id);
