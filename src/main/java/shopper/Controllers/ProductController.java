@@ -1,7 +1,6 @@
 package shopper.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import shopper.Interfaces.ProductRepository;
-import shopper.Interfaces.ProductTypeRepository;
 import shopper.Models.Product;
 import shopper.Models.ProductType;
 import shopper.Services.ProductService;
@@ -86,21 +82,16 @@ public class ProductController {
     }
 
     @GetMapping("/editProduct/{id}")
-    public ModelAndView getEditProductById(@PathVariable Long id) {
+    public ModelAndView getEditProductById(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Optional<Product> product = productService.getProductById(id);
+        Product product = productService.getProductById(id);
 
-        if (auth.getName().equals(product.get().getUsername())) {
-            try {
-                List<ProductType> typesList = productService.findAllByOrderAndType();
-                modelAndView.addObject("productTypes", typesList);
-                modelAndView.addObject("productToEdit", product.get());
-                modelAndView.setViewName("editProductById");
-            } catch (Exception e) {
-                modelAndView.setViewName("redirect:/");
-                return modelAndView;
-            }
+        if (auth.getName().equals(product.getUsername())) {
+            List<ProductType> typesList = productService.findAllByOrderAndType();
+            modelAndView.addObject("productTypes", typesList);
+            modelAndView.addObject("productToEdit", product);
+            modelAndView.setViewName("editProduct");
         } else {
             modelAndView.setViewName("redirect:/");
         }
@@ -108,12 +99,37 @@ public class ProductController {
         return modelAndView;
     }
 
-    @PostMapping("/editProductById")
-    public ModelAndView editProductById(@Valid @ModelAttribute("productToEdit") Product product,
-                                        @ModelAttribute("editProductId") Long id,
+    @GetMapping("/editProduct/error/{id}")
+    public ModelAndView getEditProductByIdError(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Product product = productService.getProductById(id);
+
+        System.err.println("Inside error Page");
+
+        if (auth.getName().equals(product.getUsername())) {
+            List<ProductType> typesList = productService.findAllByOrderAndType();
+
+            System.err.println("Inside error getMapping");
+            modelAndView.addObject("error", true);
+            modelAndView.addObject("errorMessage", "Fix the problems and try again!");
+
+            modelAndView.addObject("productTypes", typesList);
+            modelAndView.addObject("productToEdit", product);
+            modelAndView.setViewName("editProduct");
+        } else {
+            modelAndView.setViewName("redirect:/");
+        }
+
+        return modelAndView;
+    }
+
+    @PostMapping("/editProduct/{id}")
+    public ModelAndView editProductById(@PathVariable Integer id,
+                                        @Valid @ModelAttribute("productToEdit") Product product,
                                         BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        Optional<Product> productToEdit = productService.getProductById(id);
+        Product productToEdit = productService.getProductById(product.getId());
 
         if (bindingResult.hasErrors() || product.getName().trim().length() == 0 ||
                 product.getDescription().trim().length() == 0) {
@@ -122,22 +138,24 @@ public class ProductController {
             modelAndView.addObject("productToEdit", productToEdit);
             modelAndView.addObject("productTypes", typesList);
 
-            modelAndView.setViewName("editProductById");
+            modelAndView.setViewName("redirect:/editProduct/error/" + id);
         } else {
-            editProductApi(product, id);
-            modelAndView.setViewName("accountInfo");
+//            editProductApi(product);
+            product.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+            productService.saveProduct(product);
+            modelAndView.setViewName("redirect:/accountInfo");
         }
 
         return modelAndView;
     }
 
     @GetMapping("/deleteProduct/{id}")
-    public ModelAndView deleteProduct(@PathVariable Long id) {
+    public ModelAndView deleteProduct(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Optional<Product> product = productService.getProductById(id);
+        Product product = productService.getProductById(id);
 
-        if (auth.getName().equals(product.get().getUsername())) {
+        if (auth.getName().equals(product.getUsername())) {
             deleteProductApi(id);
             modelAndView.setViewName("redirect:/accountInfo");
         } else {
@@ -166,11 +184,11 @@ public class ProductController {
     }
 
     @GetMapping("/getProduct/{id}")
-    public ModelAndView findProductById(@PathVariable Long id) {
+    public ModelAndView findProductById(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         try {
-            Optional<Product> product = productService.getProductById(id);
-            modelAndView.addObject("productById", product.get());
+            Product product = productService.getProductById(id);
+            modelAndView.addObject("productById", product);
             modelAndView.setViewName("getProductById");
         } catch (Exception e){
             modelAndView.setViewName("index");
@@ -194,19 +212,19 @@ public class ProductController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Product> editProductApi(@RequestBody Product product, Long id) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//    public ResponseEntity<Product> editProductApi(@RequestBody Product product) {
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//
+////        product.setId(id);
+//        product.setName(product.getName().trim());
+//        product.setDescription(product.getDescription().trim());
+//        product.setUsername(auth.getName());
+//        productService.saveProduct(product);
+//
+//        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+//    }
 
-        product.setId(id);
-        product.setName(product.getName().trim());
-        product.setDescription(product.getDescription().trim());
-        product.setUsername(auth.getName());
-        productService.saveProduct(product);
-
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    }
-
-    public void deleteProductApi(Long id) {
+    public void deleteProductApi(Integer id) {
         productService.deleteProductById(id);
     }
 }

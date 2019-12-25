@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopper - edit a product</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+    <div th:include="navbar :: navbar" class="navbar"></div>
+
+    <div class="container body edit-product" th:object="${productToEdit}">
+        <h1 style="margin-bottom: 50px;">Edit your product!</h1>
+
+        <form class="add-product-form" th:action="@{'/editProduct/' + ${productToEdit.id}}" method="post">
+
+            <div th:if="${error}" style="margin-bottom: 10px;">
+                <span class="validationError"
+                      th:text="${errorMessage}">Name Error
+                </span><br/>
+            </div>
+
+            <label class="text-before-field" for="editProductId">Product id:</label><br/>
+            <div th:if="${#fields.hasErrors('id')}">
+                <span class="validationError"
+                      th:errors="*{id}">Name Error
+                </span><br/>
+            </div>
+            <input type="number" class="input-place" th:field="*{id}"
+                   placeholder="ID" id="editProductId" disabled/><br/><br/>
+
+            <label class="text-before-field" for="editProductName">Product name:</label><br/>
+            <input type="text" class="input-place" th:field="*{name}"
+                   placeholder="Product name" id="editProductName"/><br/><br/>
+
+            <label class="text-before-field" for="editProductPrice">Product price:</label><br/>
+            <div th:if="${#fields.hasErrors('price')}">
+                <span class="validationError"
+                      th:errors="*{price}">Name Error
+                </span><br/>
+            </div>
+            <input type="text" class="input-place" th:field="*{price}"
+                   placeholder="Price" id="editProductPrice"/><br/><br/>
+
+            <label class="text-before-field" for="editProductDescription">Product description:</label><br/>
+            <textarea class="input-place input-textarea" th:field="*{description}"
+                      placeholder="Description" id="editProductDescription"></textarea><br/><br/>
+
+            <label class="text-before-field" for="editProductType">Product type:</label><br/>
+            <select class="select-element" name="type" id="editProductType">
+                <option th:text="*{type}" selected hidden></option>
+                <option th:each="types : ${productTypes}"
+                        th:text="${types.type}"></option></select><br/><br/>
+
+            <button type="submit" class="btn btn-add-product">Update product</button>
+        </form>
+
+    </div>
+</body>
+</html>

@@ -20,7 +20,7 @@ public class Product implements Serializable {
 
     @Id
     @NotNull(message = "Price must be at least 1 letter")
-    private Long id;
+    private Integer id;
 
     @Size(min = 1, message = "Name must be at least 1 letter")
     @Size(max = 250, message = "Name must be lower than 250 letters")
@@ -31,7 +31,7 @@ public class Product implements Serializable {
     @Column(name = "price")
     private Float price;
 
-    @Size(min = 10, message = "Description must be 10 letters")
+    @Size(min = 10, message = "Description must be at least 10 letters")
     @Column(name = "description")
     private String description;
 

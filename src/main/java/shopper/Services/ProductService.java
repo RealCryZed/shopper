@@ -28,12 +28,12 @@ public class ProductService {
         productTypeRepo.save(productType);
     }
 
-    public void deleteProductById(Long id) {
+    public void deleteProductById(Integer id) {
         productRepo.deleteById(id);
     }
 
-    public Optional<Product> getProductById(Long id) {
-        return productRepo.findById(id);
+    public Product getProductById(Integer id) {
+        return productRepo.findProductById(id);
     }
 
     public List<Product> findAllProductsByName(String productName) {

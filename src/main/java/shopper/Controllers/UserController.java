@@ -82,6 +82,12 @@ public class UserController {
         User user = userService.findAllUserInfoByUsername(auth.getName());
         List<Product> productList = productService.findAllProductsByUser(user.getUsername());
 
+        model.addAttribute("isProductListEmpty", false);
+        if(productList.size() == 0) {
+            model.addAttribute("isProductListEmpty", true);
+            model.addAttribute("emptyProduct", "User doesn't have any product.");
+        }
+
         model.addAttribute("loggedUser", user);
         model.addAttribute("userProducts", productList);
 

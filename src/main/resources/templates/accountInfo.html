@@ -33,6 +33,11 @@
         <div>
             <h4 style="margin-bottom: 10px;">User products:</h4>
             <div class="user-products-div-ul">
+
+                <div th:if="${isProductListEmpty}" class="user-products-empty-list">
+                    <h5 style="color: #2B2B2B; font-size: 12px;" th:text="${emptyProduct}"></h5>
+                </div>
+
                 <ul class="user-products-ul" style="height: inherit; margin-bottom: 10px;">
                     <li class="user-products-li" th:each="product : ${userProducts}">
                         <div class="user-product-div-delete-btn">
