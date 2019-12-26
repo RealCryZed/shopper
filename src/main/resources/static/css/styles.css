@@ -227,21 +227,27 @@ span.validationError {
 }
 
 .user-product-edit-btn-element {
-    margin-right: 5px;
+    margin-right: 2px;
+    padding-top: 10px;
+}
+
+.user-product-edit-btn-element:hover {
+    border-bottom: 2px outset black;
 }
 
 .user-product-edit-btn {
-    width: 16px;
-    height: 16px;
-    margin: 5px 3px 4px 4px;
+    width: 13px;
+    height: 13px;
+    margin: 7px 3px 0px 4px;
+    padding-bottom: 1px;
 }
 
 .user-product-delete-btn {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: bold;
     color: #990707;
     float: right;
-    margin: 3px 10px 4px 4px;
+    margin: 3px 10px 2px 4px;
     padding: 0px 3px;
 }
 
