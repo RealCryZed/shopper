@@ -196,6 +196,19 @@ span.validationError {
     margin-bottom: 20px;
 }
 
+.btn-to-log-out {
+    width: 80px;
+    color: white;
+    background-color: #AD1313;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-to-log-out:hover {
+    color: white;
+    background-color: #FF1313;
+}
+
 .user-products-div-ul {
     max-width: 900px;
     margin: 0 auto;
@@ -277,80 +290,6 @@ span.validationError {
 
 .user-products-li:hover {
     background: #eee;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    transition: opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.overlay:target {
-    visibility: visible;
-    opacity: 1;
-}
-
-.popup {
-    margin: 70px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    width: 40%;
-    height: 200px;
-    position: relative;
-    transition: all 5s ease-in-out;
-}
-
-.popup h2 {
-    margin-top: 0;
-    color: #333;
-    font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    transition: all 200ms;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-}
-.popup .close:hover {
-    color: #06D85F;
-}
-.popup .content {
-    height: 80%;
-    overflow: auto;
-}
-
-.popup-to-delete-product-btns {
-    margin-top: 25px;
-}
-
-#popup-to-delete-item-btn-yes {
-    margin-right: 10px;
-    padding: 15px 30px 15px 30px;
-    color: white;
-    background-color: #04721F;
-}
-
-#popup-to-delete-item-btn-no {
-    padding: 15px 30px 15px 30px;
-    color: white;
-    background-color: #CC1212;
-}
-
-@media screen and (max-width: 700px){
-    .popup{
-        width: 70%;
-    }
 }
 
 /*

@@ -104,12 +104,9 @@ public class ProductController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Product product = productService.getProductById(id);
 
-        System.err.println("Inside error Page");
-
         if (auth.getName().equals(product.getUsername())) {
             List<ProductType> typesList = productService.findAllByOrderAndType();
 
-            System.err.println("Inside error getMapping");
             modelAndView.addObject("error", true);
             modelAndView.addObject("errorMessage", "Fix the problems and try again!");
 
