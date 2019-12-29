@@ -7,7 +7,6 @@ import shopper.Models.Product;
 import shopper.Models.ProductType;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service("productService")
 public class ProductService {
@@ -34,6 +33,13 @@ public class ProductService {
 
     public Product getProductById(Integer id) {
         return productRepo.findProductById(id);
+    }
+
+    public Boolean doesProductExistById(Integer id) {
+        if (productRepo.findProductById(id) == null) {
+            return false;
+        }
+        return true;
     }
 
     public List<Product> findAllProductsByName(String productName) {

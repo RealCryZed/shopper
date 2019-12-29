@@ -20,20 +20,11 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class UserController {
 
-   @Autowired
-   private UserService userService;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private ProductService productService;
-
-    @RequestMapping("/")
-    public ModelAndView index(Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        
-        modelAndView.setViewName("index");
-
-        return modelAndView;
-    }
 
     @RequestMapping("/login")
     public ModelAndView login() {
