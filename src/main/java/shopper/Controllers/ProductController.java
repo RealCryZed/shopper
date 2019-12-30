@@ -181,12 +181,7 @@ public class ProductController {
     @GetMapping("/getProduct/{id}")
     public ModelAndView findProductById(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
-
-        if (!productService.doesProductExistById(id)) {
-            modelAndView.setViewName("redirect:/error");
-            return modelAndView;
-        }
-
+        
         try {
             Product product = productService.getProductById(id);
             modelAndView.addObject("productById", product);
