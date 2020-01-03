@@ -9,9 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import shopper.Models.Product;
 import shopper.Services.ProductService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -26,13 +24,11 @@ public class FeatureController {
 
         List<Product> listOfProducts = productService.findAllProducts();
         List<Product> randListOfProducts = new ArrayList<>();
-        Random random = new Random();
 
-        int sizeOfList = listOfProducts.size();
+        Collections.shuffle(listOfProducts);
 
         for (int i = 0; i < 6; i++) {
-            int randNum = random.nextInt(sizeOfList-1 - 0 + 1) + 0;
-            randListOfProducts.add(listOfProducts.get(randNum));
+            randListOfProducts.add(listOfProducts.get(i));
         }
 
         modelAndView.addObject("randomProductList", randListOfProducts);

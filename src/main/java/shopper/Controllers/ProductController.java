@@ -17,6 +17,8 @@ import shopper.Services.ProductService;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -56,7 +58,7 @@ public class ProductController {
             modelAndView.addObject("productTypes", productService.findAllByOrderAndType());
         } else {
             addProductApi(product);
-            modelAndView.setViewName("index");
+            modelAndView.setViewName("redirect:/");
         }
 
         return modelAndView;
@@ -74,7 +76,7 @@ public class ProductController {
         } else {
             prodType.setType(prodType.getType().trim());
             productService.saveProductType(prodType);
-            modelAndView.setViewName("index");
+            modelAndView.setViewName("redirect:/");
         }
 
         return modelAndView;
@@ -169,6 +171,7 @@ public class ProductController {
 
         if(productList.size() == 0) {
             modelAndView.addObject("productNotFound", "Product '" + productName + "' not found");
+            addRandProductAtHomePage(modelAndView);
             modelAndView.setViewName("index");
         } else{
             model.addAttribute("products", productList);
@@ -187,7 +190,7 @@ public class ProductController {
             modelAndView.addObject("productById", product);
             modelAndView.setViewName("getProductById");
         } catch (Exception e){
-            modelAndView.setViewName("index");
+            modelAndView.setViewName("redirect:/");
             return modelAndView;
         }
 
@@ -210,5 +213,18 @@ public class ProductController {
 
     public void deleteProductApi(Integer id) {
         productService.deleteProductById(id);
+    }
+
+    public void addRandProductAtHomePage(ModelAndView modelAndView) {
+        List<Product> listOfProducts = productService.findAllProducts();
+        List<Product> randListOfProducts = new ArrayList<>();
+
+        Collections.shuffle(listOfProducts);
+
+        for (int i = 0; i < 6; i++) {
+            randListOfProducts.add(listOfProducts.get(i));
+        }
+
+        modelAndView.addObject("randomProductList", randListOfProducts);
     }
 }
