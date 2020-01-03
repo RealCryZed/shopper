@@ -168,7 +168,7 @@ public class ProductController {
         List<Product> productList = productService.findAllProductsByName(productName);
 
         if(productList.size() == 0) {
-            modelAndView.addObject("productNotFound", "Product " + productName + " not found");
+            modelAndView.addObject("productNotFound", "Product '" + productName + "' not found");
             modelAndView.setViewName("index");
         } else{
             model.addAttribute("products", productList);

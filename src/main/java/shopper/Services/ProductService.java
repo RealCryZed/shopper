@@ -35,11 +35,8 @@ public class ProductService {
         return productRepo.findProductById(id);
     }
 
-    public Boolean doesProductExistById(Integer id) {
-        if (productRepo.findProductById(id) == null) {
-            return false;
-        }
-        return true;
+    public List<Product> findAllProducts() {
+        return productRepo.findAll();
     }
 
     public List<Product> findAllProductsByName(String productName) {

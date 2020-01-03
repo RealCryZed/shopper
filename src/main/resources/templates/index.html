@@ -20,15 +20,34 @@
         
         <div class="search-product">
             <form th:action="@{/getProducts}" method="get" id="search-product-form">
-                <label class="text-before-field" for="productName">Product name:</label>
-                <input type="text" style="padding: 3px; width: 200px;" placeholder="Search" name="productName" id="productName"/><br/>
-                <div th:if="${productNotFound != null}"><br/>
+                <div th:if="${productNotFound != null}">
                     <span class="validationError"
                           th:text="${productNotFound}">Name Error
                     </span><br/>
-                </div><br/>
+                </div>
+                <label class="text-before-field" for="productName">Product name:</label>
+                <input type="text" style="padding: 3px; width: 200px;" placeholder="Search" name="productName" id="productName"/><br/><br/>
                 <button type="submit" class="btn btn-search-product">Search</button>
             </form>
+        </div>
+
+        <div class="rand-products-main">
+            <div class="list-of-product-width">
+                <h2 class="found-products-h2">What we got for you:</h2><br/>
+                <div class="found-products-div-ul">
+                    <ul class="found-products-ul">
+                        <li class="found-products-li" th:each="product : ${randomProductList}">
+                            <a class="found-products-a" th:href="@{'/getProduct/' + ${product.id}}">
+                                <div class="found-products-inside-div">
+                                    <h4 th:text="${product.name}">Name</h4>
+                                    <p class="price" th:text="${product.price} + '$'">Price</p>
+                                    <h5 th:text="${product.description}">Description</h5>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -9,6 +9,8 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 
+    List<Product> findAll();
+
     List<Product> findAllByNameContainsIgnoreCase(String name);
 
     List<Product> findAllByUsername(String username);
