@@ -210,7 +210,6 @@ span.validationError {
     font-weight: 900;
     margin: 0px;
     text-transform: uppercase;
-    background: url('../img/text.png');
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: cover;

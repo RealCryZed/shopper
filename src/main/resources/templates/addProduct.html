@@ -16,7 +16,7 @@
 
         <!-- Adding product -->
 
-        <form class="add-product-form" th:action="@{/addProduct}" th:object="${product}" method="post">
+        <form class="add-product-form" th:action="@{/add-product}" th:object="${product}" method="post">
 
             <label class="text-before-field" for="addProductId">Product id:</label><br/>
             <div th:if="${#fields.hasErrors('id')}">
@@ -66,7 +66,7 @@
 
         <!-- Adding product type -->
 
-        <form class="add-product-type-form" th:action="@{/addType}" th:object="${productType}" method="post">
+        <form class="add-product-type-form" th:action="@{/add-type}" th:object="${productType}" method="post">
         <label class="text-before-field" for="addingProductType">Product type:</label><br/>
         <div th:if="${#fields.hasErrors('type')}">
                 <span class="validationError"

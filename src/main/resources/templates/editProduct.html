@@ -14,7 +14,7 @@
     <div class="container body edit-product" th:object="${productToEdit}">
         <h1 style="margin-bottom: 50px;">Edit your product!</h1>
 
-        <form class="add-product-form" th:action="@{'/editProduct/' + ${productToEdit.id}}" method="post">
+        <form class="add-product-form" th:action="@{'/edit-product/' + ${productToEdit.id}}" method="post">
 
             <div th:if="${error}" style="margin-bottom: 10px;">
                 <span class="validationError"

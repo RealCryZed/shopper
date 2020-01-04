@@ -15,7 +15,7 @@
         <h1 style="margin-bottom: 50px;">Account information</h1>
         <h4 style="margin-bottom: 10px;">Credentials:</h4>
 
-        <form class="account-info-form" th:action="@{/accountInfo}" method="get">
+        <form class="account-info-form" th:action="@{/account-info}" method="get">
             <table>
                 <tr>
                     <th>Username</th>
@@ -43,21 +43,22 @@
                 <ul class="user-products-ul" style="height: inherit; margin-bottom: 10px;">
                     <li class="user-products-li" th:each="product : ${userProducts}">
                         <div class="user-product-div-delete-btn">
-                            <a th:href="@{'/editProduct/' + ${product.id}}" class="user-product-edit-btn-element">
+                            <a th:href="@{'/edit-product/' + ${product.id}}" class="user-product-edit-btn-element">
                                 <img src="/images/pencil-edit-button.png" class="user-product-edit-btn">
                             </a>
 
-                            <a th:href="@{'/deleteProduct/' + ${product.id}}"
+                            <a th:href="@{'/delete-product/' + ${product.id}}"
                                onclick="deleteProduct(this.id); return false;"
                                th:id="${product.name}" class="user-product-delete-btn">&times;</a>
                         </div>
 
-                        <a class="user-products-a" th:href="@{'/getProduct/' + ${product.id}}">
+                        <a class="user-products-a" th:href="@{'/product/' + ${product.id}}">
                             <div class="user-products-inside-div">
 
                                 <h4 th:text="${product.name}">Name</h4>
-                                <p class="price" th:text="${product.price} + '$'">Price</p>
-                                <h5 th:text="${product.description}">Description</h5>
+                                <h5 class="price" th:text="${product.price} + '$'">Price</h5>
+                                <h5 style="font-size: 11px; color: #34414B;" th:text="'Category: ' + ${product.type}">Category</h5>
+                                <h5 style="font-size: 13px; color: #232C32;" th:text="${product.description}">Description</h5>
                             </div>
                         </a>
                     </li>

@@ -18,7 +18,7 @@ public class ProductType {
     private Long id;
 
     @Size(min = 1, message = "Type must be at least 1 letter")
-    @Size(max = 40, message = "Name must be lower than 40 letters")
+    @Size(max = 20, message = "Name must be lower than 20 letters")
     @Column(name = "type")
     private String type;
 }

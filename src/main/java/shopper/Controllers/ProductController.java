@@ -28,7 +28,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/addProduct")
+    @GetMapping("/add-product")
     public ModelAndView addProduct() {
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView modelAndView = new ModelAndView();
@@ -46,7 +46,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @PostMapping("/addProduct")
+    @PostMapping("/add-product")
     public ModelAndView addProduct(@ModelAttribute("productType") ProductType prodType,
                                    @Valid @ModelAttribute("product") Product product,
                                    BindingResult bindingResult) {
@@ -64,7 +64,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @PostMapping("/addType")
+    @PostMapping("/add-type")
     public ModelAndView addType(@ModelAttribute("product") Product product,
                                 @Valid @ModelAttribute("productType") ProductType prodType,
                                 BindingResult bindingResult) {
@@ -82,7 +82,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @GetMapping("/editProduct/{id}")
+    @GetMapping("/edit-product/{id}")
     public ModelAndView getEditProductById(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -100,7 +100,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @GetMapping("/editProduct/error/{id}")
+    @GetMapping("/edit-product/error/{id}")
     public ModelAndView getEditProductByIdError(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -122,7 +122,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @PostMapping("/editProduct/{id}")
+    @PostMapping("/edit-product/{id}")
     public ModelAndView editProductById(@PathVariable Integer id,
                                         @Valid @ModelAttribute("productToEdit") Product product,
                                         BindingResult bindingResult) {
@@ -136,17 +136,17 @@ public class ProductController {
             modelAndView.addObject("productToEdit", productToEdit);
             modelAndView.addObject("productTypes", typesList);
 
-            modelAndView.setViewName("redirect:/editProduct/error/" + id);
+            modelAndView.setViewName("redirect:/edit-product/error/" + id);
         } else {
             product.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
             productService.saveProduct(product);
-            modelAndView.setViewName("redirect:/accountInfo");
+            modelAndView.setViewName("redirect:/account-info");
         }
 
         return modelAndView;
     }
 
-    @GetMapping("/deleteProduct/{id}")
+    @GetMapping("/delete-product/{id}")
     public ModelAndView deleteProduct(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -154,7 +154,7 @@ public class ProductController {
 
         if (auth.getName().equals(product.getUsername())) {
             deleteProductApi(id);
-            modelAndView.setViewName("redirect:/accountInfo");
+            modelAndView.setViewName("redirect:/account-info");
         } else {
             modelAndView.setViewName("redirect:/");
         }
@@ -162,7 +162,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @GetMapping("/getProducts")
+    @GetMapping("/all-products")
     public ModelAndView findProducts(@RequestParam("productName") String productName,
                                      Model model) {
         ModelAndView modelAndView = new ModelAndView();
@@ -181,7 +181,7 @@ public class ProductController {
         return modelAndView;
     }
 
-    @GetMapping("/getProduct/{id}")
+    @GetMapping("/product/{id}")
     public ModelAndView findProductById(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         

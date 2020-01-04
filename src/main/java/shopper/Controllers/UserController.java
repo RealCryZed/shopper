@@ -66,7 +66,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @GetMapping("/accountInfo")
+    @GetMapping("/account-info")
     public ModelAndView getAccountInfo(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 

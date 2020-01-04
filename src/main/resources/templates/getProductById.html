@@ -17,6 +17,7 @@
                 <div id="product-by-id-div-price-and-desc">
                     <h4 id="product-by-id-name" th:text="${productById.name}">Name</h4>
                     <p id="product-by-id-price" class="price" th:text="${productById.price} + '$'">Price</p>
+                    <h5 style="font-size: 12px;" th:text="'Category: ' + ${productById.type}">Category</h5>
                     <h5 id="product-by-id-description" th:text="${productById.description}">Description</h5>
                 </div>
             </div>
